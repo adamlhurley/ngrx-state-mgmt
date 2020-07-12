@@ -1,8 +1,10 @@
 <div class="container">
-  <h2>Shopping List - ngrx state management</h2>
-  <div class="spinner-border text-success" role="status" *ngIf="(loading$ | async)">
-    <span class="sr-only">Loading...</span>
+  <div class="modal-dialog modal-dialog-centered d-flex justify-content-center" role="document" *ngIf="(loading$ | async)">
+    <div class="spinner-border" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
   </div>
+  <h2>Shopping List - ngrx state management</h2>
   <table class="table table-striped" *ngIf="(shoppingItems | async); else noItems">
     <thead>
       <tr>
