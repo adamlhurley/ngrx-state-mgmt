@@ -1,30 +1,50 @@
-<div id="wrapper">
-  <div [class.loading]="(loading$ | async)" id="shopping-list" *ngIf="!(error$ | async); else error">
-    <div id="list">
-      <h2>
-        Shopping List
-      </h2>
-
-      <ul *ngIf="(shoppingItems | async); else noItems">
-        <li *ngFor="let shopping of shoppingItems | async" (click)="deleteItem(shopping.id)">
-          <span>{{ shopping.name }}</span>
-        </li>
-      </ul>
-
-      <ng-template #noItems>
-        <ul>
-          <li style="max-width:250px;margin:0 auto;">No items found. Are you sure there's <em>nothing</em> you want?</li>
-        </ul>
-      </ng-template>
-    </div>
-
-    <form (ngSubmit)="addItem()">
-      <input type="text" [(ngModel)]="newShoppingItem.name" placeholder="Item" name="itemName" />
-      <button type="submit">+</button>
-    </form>
+<div class="container">
+  <h2>Shopping List - ngrx state management</h2>
+  <div class="spinner-border text-success" role="status" *ngIf="(loading$ | async)">
+    <span class="sr-only">Loading...</span>
   </div>
-</div>
+  <table class="table table-striped" *ngIf="(shoppingItems | async); else noItems">
+    <thead>
+      <tr>
+        <th scope="col">Product</th>
+        <th scope="col">Size</th>
+        <th scope="col">Location</th>
+        <th scope="col">Amount</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let shopping of shoppingItems | async">
+        <th>{{ shopping.name }}</th>
+        <td>{{ shopping.size }}</td>
+        <td>{{ shopping.location }}</td>
+        <td>{{ shopping.amount }}</td>
+        <td><button type="button" class="close" aria-label="Delete" (click)="deleteItem(shopping.id)">
+  <span aria-hidden="true">&times;</span>
+</button></td>
+      </tr>
+    </tbody>
+  </table>
 
-<ng-template #error>
-  <h2>{{(error$ | async)?.message}}</h2>
-</ng-template>
+  <div>
+    <h4>Add new item</h4>
+    <form (ngSubmit)="addItem()">
+      <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="newShoppingItem.name" placeholder="Item" name="itemName">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="newShoppingItem.size" placeholder="Size" name="itemNames">
+      </div>
+      <div class="form-group">
+        <input type="text" class="form-control" [(ngModel)]="newShoppingItem.location" placeholder="Location" name="itemName">
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" [(ngModel)]="newShoppingItem.amount" placeholder="Amount" name="itemName">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+  </div>
+  <ng-template #error>
+    <h2>{{(error$ | async)?.message}}</h2>
+  </ng-template>

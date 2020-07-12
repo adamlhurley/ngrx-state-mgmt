@@ -1,8 +1,32 @@
 {
   "shopping": [
     {
-      "id": 1,
-      "name": "dr pepper"
+      "id": "63a969e2-710c-4e71-b56a-ec97b806c336",
+      "name": "Suntory",
+      "size": "500ml",
+      "location": "Tokyo",
+      "amount": "150"
+    },
+    {
+      "id": "683f4a96-bd98-4abe-a478-3f2d41e34656",
+      "name": "Guinness",
+      "size": "Large",
+      "location": "Dublin",
+      "amount": "50"
+    },
+    {
+      "id": "3072a4fc-a90d-4ad3-ba57-07640907d9fb",
+      "name": "Pinot Noir",
+      "size": "250ml",
+      "location": "California",
+      "amount": "40"
+    },
+    {
+      "id": "290393fe-8e9f-4ac9-9327-e635aa2e4a81",
+      "name": "Orange Juice",
+      "size": "200ml",
+      "location": "Florida",
+      "amount": 5
     }
   ]
 }

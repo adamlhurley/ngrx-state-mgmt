@@ -20,7 +20,13 @@ export class AppComponent implements OnInit {
   shoppingItems: Observable<Array<ShoppingItem>>;
   loading$: Observable<boolean>;
   error$: Observable<Error>;
-  newShoppingItem: ShoppingItem = { id: '', name: '' };
+  newShoppingItem: ShoppingItem = {
+    id: '',
+    name: '',
+    size: '',
+    location: '',
+    amount: undefined
+  };
 
   constructor(private store: Store<AppState>) {}
 
@@ -37,7 +43,13 @@ export class AppComponent implements OnInit {
 
     this.store.dispatch(new AddItemAction(this.newShoppingItem));
 
-    this.newShoppingItem = { id: '', name: '' };
+    this.newShoppingItem = {
+      id: '',
+      name: '',
+      size: '',
+      location: '',
+      amount: undefined
+    };
   }
 
   deleteItem(id: string) {
