@@ -10,6 +10,8 @@ import {
   DeleteItemAction,
   LoadShoppingAction
 } from './store/actions/shopping.actions';
+import { FormGroup, FormBuilder } from '@angular/forms';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-root',
@@ -27,14 +29,18 @@ export class AppComponent implements OnInit {
     location: '',
     amount: undefined
   };
+  title = 'modal2';
 
-  constructor(private store: Store<AppState>) {}
+  constructor(
+    private store: Store<AppState>,
+    private fb: FormBuilder,
+    private modalService: NgbModal
+  ) {}
 
   ngOnInit() {
     this.shoppingItems = this.store.select(store => store.shopping.list);
     this.loading$ = this.store.select(store => store.shopping.loading);
     this.error$ = this.store.select(store => store.shopping.error);
-
     this.store.dispatch(new LoadShoppingAction());
   }
 
@@ -54,5 +60,15 @@ export class AppComponent implements OnInit {
 
   deleteItem(id: string) {
     this.store.dispatch(new DeleteItemAction(id));
+  }
+
+  openModal(targetModal, user) {
+    this.modalService.open(targetModal, {
+      centered: true,
+      backdrop: 'static'
+    });
+  }
+  onSubmit() {
+    this.modalService.dismissAll();
   }
 }

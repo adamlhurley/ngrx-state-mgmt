@@ -13,6 +13,7 @@
         <th scope="col">Location</th>
         <th scope="col">Amount</th>
         <th scope="col"></th>
+        <th scope="col"></th>
       </tr>
     </thead>
     <tbody>
@@ -21,6 +22,9 @@
         <td>{{ shopping.size }}</td>
         <td>{{ shopping.location }}</td>
         <td>{{ shopping.amount }}</td>
+        <td><button type="button" class="close" aria-label="Edit" (click)="updateItem(shopping.id)">
+  <span aria-hidden="true">Edit</span>
+</button></td>
         <td><button type="button" class="close" aria-label="Delete" (click)="deleteItem(shopping.id)">
   <span aria-hidden="true">&times;</span>
 </button></td>
@@ -28,9 +32,39 @@
     </tbody>
   </table>
 
-  <div>
-    <h4>Add new item</h4>
-    <form (ngSubmit)="addItem()">
+  <button type="button" class="btn btn-primary" (click)="openModal(editProfileModal, user)">Add Item</button>
+
+  <ng-template #editProfileModal let-modal>
+    <div class="modal-header">
+      <h5 class="modal-title" id="editProfileLabel">Add Item</h5>
+      <button type="button" class="close" (click)="modal.dismiss()" aria-label="Close">
+   <span aria-hidden="true">&times;</span>
+  </button>
+    </div>
+
+    <div class="modal-body">
+      <form (ngSubmit)="addItem()">
+        <div class="form-group">
+          <input type="text" class="form-control" [(ngModel)]="newShoppingItem.name" placeholder="Item" name="itemName">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" [(ngModel)]="newShoppingItem.size" placeholder="Size" name="itemNames">
+        </div>
+        <div class="form-group">
+          <input type="text" class="form-control" [(ngModel)]="newShoppingItem.location" placeholder="Location" name="itemName">
+        </div>
+        <div class="form-group">
+          <input type="number" class="form-control" [(ngModel)]="newShoppingItem.amount" placeholder="Amount" name="itemName">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </ng-template>
+
+
+  <!--<div>
+    <h4>Add new item</h4>-->
+  <!--<form (ngSubmit)="addItem()">
       <div class="form-group">
         <input type="text" class="form-control" [(ngModel)]="newShoppingItem.name" placeholder="Item" name="itemName">
       </div>
@@ -44,9 +78,9 @@
         <input type="number" class="form-control" [(ngModel)]="newShoppingItem.amount" placeholder="Amount" name="itemName">
       </div>
       <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </form>-->
 
-  </div>
+  <!--</div>-->
   <ng-template #error>
     <h2>{{(error$ | async)?.message}}</h2>
   </ng-template>

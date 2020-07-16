@@ -29,18 +29,25 @@
       "amount": 5
     },
     {
-      "id": "226923ae-e11f-48b4-99a8-257e3538f0b7",
-      "name": "Fanta",
-      "size": "Miniture",
-      "location": "Lyon St North",
-      "amount": 2
-    },
-    {
       "id": "d0703187-b57b-4a5b-a3c2-b5d1f32c4430",
       "name": "Baileys",
       "size": "Large",
       "location": "Dublin",
       "amount": 15
+    },
+    {
+      "id": "e35932d5-8044-4894-b7b5-7c44ac2c0cd4",
+      "name": "White Russian",
+      "size": "75ml",
+      "location": "Moscow",
+      "amount": 15
+    },
+    {
+      "id": "b48d1dd6-9516-4461-9962-4d8bae4a6ac6",
+      "name": "Milk",
+      "size": "1L",
+      "location": "Cork",
+      "amount": 100
     }
   ]
 }

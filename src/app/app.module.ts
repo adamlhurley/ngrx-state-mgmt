@@ -10,6 +10,8 @@ import { ShoppingReducer } from './store/reducers/shopping-reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { ShoppingEffects } from './store/effects/shopping.effects';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [AppComponent],
@@ -17,6 +19,8 @@ import { ShoppingEffects } from './store/effects/shopping.effects';
     BrowserModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
+    NgbModule,
     StoreModule.forRoot({
       shopping: ShoppingReducer
     }),
